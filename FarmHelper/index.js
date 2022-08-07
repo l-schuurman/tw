@@ -5,7 +5,7 @@ function initialize() {
         date = new Date();
         date_ms = date.getTime();
         launch = new Date(date_ms);
-        launch = new Date(date_ms - 840000 + villages[i].increment);
+        launch = new Date(date_ms + villages[i].increment);
         villages[i].launch = launch;
 
     }
