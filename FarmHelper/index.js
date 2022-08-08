@@ -45,7 +45,8 @@ function displayVillages() {
 
         launchButton.innerHTML = "SEND";
 
-        link = villages[i].unit == "lc" ? "https://en129.tribalwars.net/game.php?village="+villages[i].launchID+"&screen=place&target="+villages[i].ID+"&light=1" : "https://en129.tribalwars.net/game.php?village="+villages[i].launchID+"&screen=place&target="+villages[i].ID+"&spear=2&sword=1";
+        link = villages[i].unit == "lc" ? "https://en129.tribalwars.net/game.php?village="+villages[i].launchID+"&screen=place&target="+villages[i].ID+"&light=1" : "https://en129.tribalwars.net/game.php?village="+villages[i].launchID+"&screen=place&target="+villages[i].ID+"&spear=2&sword=2";
+        console.log(link);
 
         launchButton.setAttribute("href", link);
         launchButton.setAttribute("target","_blank");
