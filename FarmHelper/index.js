@@ -16,6 +16,8 @@ function initialize() {
 
     sortVillages();
     displayVillages();
+
+    document.getElementById("increment").addEventListener("click", addLaunchToAll);
 }
 
 function addLaunchToAll() {
