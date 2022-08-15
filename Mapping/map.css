@@ -1,0 +1,20 @@
+#map {
+    display: grid;
+    grid-template-columns: repeat(341, 2px);
+    grid-template-rows: repeat(341, 2px);
+
+}
+
+/* #map > div {
+    border: 0.2px solid black;
+} */
+
+#map > div:nth-child(5n) {
+    background-color: yellow;
+}
+#map > div:nth-child(3n) {
+    background-color: red;
+}
+#map > div:nth-child(2n) {
+    background-color: blue;
+}
