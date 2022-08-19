@@ -25,14 +25,9 @@ function calcDistances() {
 
     for (let row = 0; row < data.length; row++) {
         distSubArray = []
-        // console.log(data[row].target.split("|"))
-        // [x2, y2] = data[row].target.split("|");
         a = data[row].target.split("|");
-        // console.log(a, a[0], a[1]);
-        // console.log("hi");
         x2 = a[0];
         y2 = a[1];
-        // console.log("fuck", x2, y2)
 
         for (const origin of origins) {
             [x1, y1] = origin.split("|");
@@ -41,15 +36,13 @@ function calcDistances() {
         }
         distArray.push(distSubArray);
 
-        // console.log(distSubArray);
         min = Math.min(...distSubArray);
         index = distSubArray.indexOf(min);
-        // console.log(min, index);
 
         data[row].launch = origins[index];
+        data[row].launchID = villageIDs[data[row].launch];
         data[row].launchIndex = index;
         data[row].distance = min;
-        data[row].launchID = villageIDs[data[row].launch];
     }
 
     insertLaunches();
@@ -249,6 +242,14 @@ function sendCats(event) {
     } else {
         [id, building] = id.split("_");
 
+        launchID = -1;
+        for(let row = 0; row < data.length; row++) {
+            if(id == data[row].ID){
+                launchID = data[row].launchID;
+                break;
+            }
+        }
+
         if (building === "wall") {
             null;
         } else {
@@ -258,7 +259,10 @@ function sendCats(event) {
 
             while (isClickable(building, level)) {
                 launch = document.createElement("a");
-                link = "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&catapult=" + cats[level];
+                link = launchID > -1 ? 
+                    "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&catapult=" + cats[level]
+                    :
+                    "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&catapult=" + cats[level];
 
                 launch.setAttribute("href", link);
                 launch.setAttribute("target", "_blank");
