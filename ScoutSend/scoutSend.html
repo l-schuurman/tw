@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <script src="scoutSend.js"></script>
+    <link rel="stylesheet" href="scoutSend.css">
+</head>
+
+<body>
+    <div class="flex">
+        <div class="sub-flex">
+            <textarea id="lcText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateLC">Input Villages with LC</button>
+            <ul id="lcList"></ul>
+        </div>
+        <div class="sub-flex">
+            <textarea id="spyText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateSpy">Input Villages with Scouts</button>
+            <ul id="spyList"></ul>
+        </div>
+        <div class="sub-flex">
+            <textarea id="villageText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateVillage">Override Global List</button>
+            <ul id="customVillageList"></ul>
+        </div>
+    </div>
+
+    <button id="check">Check variable status</button>
+    <button id="opentabs">Open Tabs</button>
+
+    <div id="wrapperTable">
+        <div id="tableHeader">
+
+        </div>
+        <div id="tableData">
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("updateLC").addEventListener("click", updateLC);
+        document.getElementById("updateSpy").addEventListener("click", updateSpy);
+        document.getElementById("updateVillage").addEventListener("click", updateVillage);
+        document.getElementById("opentabs").addEventListener("click", openTabs);
+        createTableHeader();
+    </script>
+
+</body>
+
+</html>
