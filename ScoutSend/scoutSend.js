@@ -324,7 +324,7 @@ function deleteAllChildren(element) {
 
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-tabDelay = 10;
+tabDelay = 1000;
 numTabs = 50;
 
 async function openTabs() {
@@ -342,7 +342,7 @@ async function openTabs() {
             checkbox = document.getElementById(data[i].ID + "_check");
             checkbox.checked = true;
 
-            await timer(tabDelay);
+            if(count % 5 == 0) await timer(tabDelay);
 
             if (count >= numTabs) {
                 break;
