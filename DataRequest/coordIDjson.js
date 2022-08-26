@@ -10,7 +10,8 @@ for(const line of arr) {
     id = data[0];
     coord = data[2] + "|" + data[3];
 
-    if(data[4] == "0") json[coord] = id;
+    // if(data[4] == "0") 
+    json[coord] = id;
 }
 
 let output = JSON.stringify(json);
