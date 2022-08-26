@@ -246,7 +246,7 @@ function handleClick(event) {
         return;
     } else if (id.includes("_")) {
         [id, type] = id.split("_");
-
+        console.log(id,type)
         if (type == "check") {
             toggleCheckbox(id);
         } else if (type == "barb") {
@@ -305,8 +305,11 @@ function sendScouts(id, launchID) {
 function toggleCheckbox(id) {
     checkbox = document.getElementById(id + "_check")
 
-    checkbox.checked = !sent.id;
-    sent[id] = !sent.id;
+    console.log(sent[id], !sent[id], sent.id, !sent.id);
+    checkbox.checked = !sent[id];
+    sent[id] = !sent[id];
+
+    console.log(checkbox.checked, sent[id]);
 }
 
 function getKeyByValue(object, value) {
@@ -322,7 +325,7 @@ function deleteAllChildren(element) {
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
 tabDelay = 50;
-numTabs = 10;
+numTabs = 30;
 
 async function openTabs() {
 
