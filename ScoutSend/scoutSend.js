@@ -324,8 +324,8 @@ function deleteAllChildren(element) {
 
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-tabDelay = 50;
-numTabs = 30;
+tabDelay = 10;
+numTabs = 50;
 
 async function openTabs() {
 
@@ -349,4 +349,22 @@ async function openTabs() {
             }
         }
     }
+}
+
+function updateTabs() {
+    numTabsTEMP = Number(document.getElementById('tabNumber').value);
+    tabDelayTEMP = Number(document.getElementById('tabDelay').value);
+    
+    console.log(numTabsTEMP, tabDelayTEMP, numTabs, tabDelay);
+
+    if(numTabsTEMP > 0){
+        numTabs = numTabsTEMP;
+    }
+    if(tabDelayTEMP > 0){
+        tabDelay = tabDelayTEMP;
+    }
+
+    console.log(numTabsTEMP, tabDelayTEMP, numTabs, tabDelay);
+
+    document.getElementById('opentabs').innerHTML = "Open Up To "+numTabs+" Tabs";
 }

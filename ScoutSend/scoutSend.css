@@ -73,3 +73,7 @@ textarea {
 ul {
     list-style-type: none;
 }
+
+button {
+    margin: 5px 0;
+}

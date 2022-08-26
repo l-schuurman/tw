@@ -36,6 +36,11 @@
         </div>
     </div>
 
+    <div style="display: flex">
+        <input type="number" id="tabNumber" placeholder="# Tabs to Open"></input>
+        <input type="number" id="tabDelay" placeholder="ms Delay per Tab"></input>
+        <button id="update-tabs">Update Parameters</button>
+    </div>
     <button id="check">Check variable status</button>
     <button id="opentabs">Open Tabs</button>
 
@@ -53,6 +58,7 @@
         document.getElementById("updateSpy").addEventListener("click", updateSpy);
         document.getElementById("updateVillage").addEventListener("click", updateVillage);
         document.getElementById("opentabs").addEventListener("click", openTabs);
+        document.getElementById("update-tabs").addEventListener("click", updateTabs);
         createTableHeader();
     </script>
 
