@@ -79,3 +79,7 @@ a {
     color: inherit;
     text-decoration: inherit;
 }
+
+textarea {
+    max-height: 250px;
+}

@@ -1,28 +1,51 @@
 <html>
+
 <head>
+    <!-- <script type="module" src="barbImports.js"></script> -->
+    <script type="module">
+        async function loadMyData() {
+            const { default: data } = await import("./barbData.json", { assert: { type: "json" } });
+            const { default: villageIDs } = await import("../gamedata/village129IDcoord.json", { assert: { type: "json" } });
+            console.log(data)
+            console.log(villageIDs)
+            window.data = data;
+            window.villageIDs = villageIDs;
+            console.log(window.data)
+            console.log(window.villageIDs)
+        }
+        loadMyData();
+    </script>
     <script src="barbShape.js"></script>
     <link rel="stylesheet" href="barbShape.css">
 </head>
+
 <body>
     <textarea name="text" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
     <button id="submit">Input Villages</button>
     <button id="check">Check variable status</button>
 
     <div id="wrapperTable">
-    <div id="tableHeader">
+        <div id="tableHeader">
 
+        </div>
+        <div id="tableData">
+
+        </div>
     </div>
-    <div id="tableData">
 
-    </div>
-</div>
+    <script>
+    var interval = setInterval(function() {
+    // get elem
+    if (typeof data == 'undefined') return;
+    clearInterval(interval);
 
-
-<script>
+    // the rest of the code
+}, 10);
+    
     createTableHeader();
-    createTableData();
+    // createTableData();
     addButtonClick();
 </script>
-
 </body>
+
 </html>
