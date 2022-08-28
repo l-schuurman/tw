@@ -368,3 +368,23 @@ function updateTabs() {
 
     document.getElementById('opentabs').innerHTML = "Open Up To "+numTabs+" Tabs";
 }
+
+function updateOutgoing() {
+    input = document.getElementById("outgoingText").value;
+    outgoingVillages = input.match(/\d+\|\d+/gm);
+
+    // displayList("outgoingVillageList", outgoingVillages, "outgoing")
+
+    for(village = 0; village < outgoingVillages.length; village++){
+        const i = data.findIndex(object => {
+            return object.target == outgoingVillages[village];
+        })
+
+        if(i > 0) {
+            id = data[i].ID;
+            checkbox = document.getElementById(id + "_check");
+            checkbox.checked = true;
+            sent[id] = true;
+        }
+    }
+}

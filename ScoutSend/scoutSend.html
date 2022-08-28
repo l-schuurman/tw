@@ -2,14 +2,6 @@
 
 <head>
     <script type="module" src="scoutImports.js"></script>
-    <!-- <script type="module">
-        import spyReports from '../gamedata/spyReports.json' assert {type: 'json'};
-        import villageIDs from '../gamedata/village129coordID.json' assert {type: 'json'};
-        import barbs from '../gamedata/village129barbs.json' assert {type: 'json'};
-        window.spyReports = spyReports;
-        window.villageIDs = villageIDs;
-        window.barbs = barbs;
-      </script> -->
     <script src="scoutSend.js"></script>
     <link rel="stylesheet" href="scoutSend.css">
 </head>
@@ -34,6 +26,12 @@
             <button id="updateVillage">Override Global List</button>
             <ul id="customVillageList"></ul>
         </div>
+        <div class="sub-flex">
+            <textarea id="outgoingText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateOutgoing">Outgoing List</button>
+            <ul id="outgoingVillageList"></ul>
+        </div>
     </div>
 
     <div style="display: flex">
@@ -57,6 +55,7 @@
         document.getElementById("updateLC").addEventListener("click", updateLC);
         document.getElementById("updateSpy").addEventListener("click", updateSpy);
         document.getElementById("updateVillage").addEventListener("click", updateVillage);
+        document.getElementById("updateOutgoing").addEventListener("click", updateOutgoing);
         document.getElementById("opentabs").addEventListener("click", openTabs);
         document.getElementById("update-tabs").addEventListener("click", updateTabs);
         createTableHeader();
