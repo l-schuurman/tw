@@ -379,12 +379,42 @@ function updateOutgoing() {
         const i = data.findIndex(object => {
             return object.target == outgoingVillages[village];
         })
+        console.log(outgoingVillages[village], i)
 
         if(i > 0) {
             id = data[i].ID;
             checkbox = document.getElementById(id + "_check");
             checkbox.checked = true;
             sent[id] = true;
+        }
+    }
+}
+
+async function sendSingleVillScouts() {
+
+    spyCoord = document.getElementById('spyCoord').value;
+    spyTabs = Number(document.getElementById('spyTabs').value);
+
+    console.log(spyCoord, spyTabs)
+
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+        if (!sent[data[i].ID] && data[i].launch === spyCoord) {
+            count += 1;
+
+            l = document.getElementById(data[i].ID + "_" + data[i].launchID);
+            l.click();
+
+            sent[data[i].ID] = true;
+
+            checkbox = document.getElementById(data[i].ID + "_check");
+            checkbox.checked = true;
+
+            if(count % 5 == 0) await timer(tabDelay);
+
+            if (count >= spyTabs) {
+                break;
+            }
         }
     }
 }

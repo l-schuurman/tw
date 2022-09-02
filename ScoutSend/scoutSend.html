@@ -39,6 +39,13 @@
         <input type="number" id="tabDelay" placeholder="ms Delay per Tab"></input>
         <button id="update-tabs">Update Parameters</button>
     </div>
+
+    <div style="display: flex">
+        <input type="text" id="spyCoord" placeholder="Coord"></input>
+        <input type="number" id="spyTabs" placeholder="# of Tabs"></input>
+        <button id="update-spyTabs">Send Scouts</button>
+    </div>
+
     <button id="check">Check variable status</button>
     <button id="opentabs">Open Tabs</button>
 
@@ -58,6 +65,8 @@
         document.getElementById("updateOutgoing").addEventListener("click", updateOutgoing);
         document.getElementById("opentabs").addEventListener("click", openTabs);
         document.getElementById("update-tabs").addEventListener("click", updateTabs);
+        document.getElementById("update-spyTabs").addEventListener("click", sendSingleVillScouts);
+
         createTableHeader();
     </script>
 
