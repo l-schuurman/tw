@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <script type="module" src="DefWithinOffImports.js"></script>
+    <script src="DefWithinOff.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="flex">
+        <div class="sub-flex">
+            <textarea id="defText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateDef">Input Def Villages</button>
+            <ul id="defList"></ul>
+        </div>
+        <div class="sub-flex">
+            <textarea id="offText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateOff">Input Off Villages</button>
+            <ul id="offList"></ul>
+        </div>
+    </div>
+
+    <div style="display: flex">
+        <input type="number" id="tabNumber" placeholder="# Tabs to Open"></input>
+        <input type="number" id="tabDelay" placeholder="ms Delay per Tab"></input>
+        <button id="update-tabs">Update Parameters</button>
+    </div>
+    <button id="check">Check variable status</button>
+    <button id="opentabs">Open Tabs</button>
+
+    <div id="wrapperTable">
+        <div id="tableHeader">
+
+        </div>
+        <div id="tableData">
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("updateOff").addEventListener("click", updateOff);
+        document.getElementById("updateDef").addEventListener("click", updateDef);
+        document.getElementById("opentabs").addEventListener("click", openTabs);
+        document.getElementById("update-tabs").addEventListener("click", updateTabs);
+        createTableHeader();
+    </script>
+
+</body>
+
+</html>
