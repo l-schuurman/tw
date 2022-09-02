@@ -1,0 +1,95 @@
+#wrapperTable {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "footer";
+    gap: 2px;
+}
+
+#tableHeader {
+    display: grid;
+    grid-template-columns: 60px 80px 80px 60px 60px repeat(16, 40px);
+    grid-area: "header";
+    gap: 2px;
+}
+
+#tableData {
+    display: grid;
+    grid-template-columns: 60px 80px 80px 60px 60px repeat(16, 40px);
+    gap: 2px;
+    grid-area: "footer";
+    overflow-y: scroll;
+    height: calc(100vh - 40px);
+}
+
+#tableHeader > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+}
+
+#tableData > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+}
+
+/* #map > div {
+    border: 0.2px solid black;
+} */
+
+img {
+    height: 16px;
+    width: 16px;
+}
+
+.header {
+    background-color: #c1a264;
+    background-image: linear-gradient(#e4c17d, #c1a264);
+}
+
+#tableData > div {
+    background: #f4e4bc;
+}
+
+.clickable {
+    font-weight: 700;
+    color: #603000;
+    cursor: pointer;
+    background: #dac89c !important;
+}
+
+.clickable:hover {
+    color: #e01f0f;
+}
+
+.coord {
+    font-weight: 700;
+    color: #603000;
+    cursor: pointer;
+}
+
+.coord:hover {
+    color: #e01f0f;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+textarea {
+    max-height: 250px;
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+}
+
+.sub-flex {
+    display: flex;
+    flex-direction: column;
+}

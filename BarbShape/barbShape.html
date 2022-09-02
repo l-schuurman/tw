@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <!-- <script type="module" src="barbImports.js"></script> -->
+    <script type="module">
+        async function loadMyData() {
+            const { default: data } = await import("./barbData.json", { assert: { type: "json" } });
+            const { default: villageIDs } = await import("../gamedata/village129IDcoord.json", { assert: { type: "json" } });
+            window.data = data;
+            window.villageIDs = villageIDs;
+        }
+        loadMyData();
+    </script>
+    <script src="barbShape.js"></script>
+    <link rel="stylesheet" href="barbShape.css">
+</head>
+
+<body>
+    <div class="flex">
+        <div class="sub-flex">
+            <textarea id="defText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateDef">Input Cat Villages</button>
+            <ul id="defList"></ul>
+        </div>
+        <div class="sub-flex">
+            <textarea id="offText" name="text"
+                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            <button id="updateOff">Input Ram Villages</button>
+            <ul id="offList"></ul>
+        </div>
+    </div>
+    <button id="check">Check variable status</button>
+
+    <div id="wrapperTable">
+        <div id="tableHeader">
+
+        </div>
+        <div id="tableData">
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("updateOff").addEventListener("click", updateOff);
+        document.getElementById("updateDef").addEventListener("click", updateDef);
+
+
+        var interval = setInterval(function () {
+            // get elem
+            if (typeof data == 'undefined') return;
+            clearInterval(interval);
+
+            // the rest of the code
+        }, 10);
+
+        createTableHeader();
+        // createTableData();
+        addButtonClick();
+    </script>
+</body>
+
+</html>
