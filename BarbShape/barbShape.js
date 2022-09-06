@@ -63,16 +63,12 @@ function calcDistances() {
         obj = {};
         offDistSubArray = []
         defDistSubArray = []
+        diffDistSubArray = []
 
         a = data[row].target.split("|");
         x2 = a[0];
         y2 = a[1];
 
-        for (const origin of offVillages) {
-            [x1, y1] = origin.split("|");
-            dist = Math.hypot((x2 - x1), (y2 - y1));
-            offDistSubArray.push(dist);
-        }
         for (const origin of defVillages) {
             [x1, y1] = origin.split("|");
             dist = Math.hypot((x2 - x1), (y2 - y1));
@@ -88,8 +84,26 @@ function calcDistances() {
         data[row].launchID = getKeyByValue(villageIDs, data[row].launch);
         data[row].defDistance = minDef;
 
-        minOff = Math.min(...offDistSubArray);
-        index = defDistSubArray.indexOf(minDef);
+        for (const origin of offVillages) {
+            [x1, y1] = origin.split("|");
+            dist = Math.hypot((x2 - x1), (y2 - y1));
+            offDistSubArray.push(dist);
+
+            diffDist = minDef - dist;
+            diffDistSubArray.push(diffDist);
+        }
+        
+        withinVillages = diffDistSubArray.filter(element => element >= 0);
+
+        if(withinVillages.length > 0) {
+            minOff = Math.min(...withinVillages)
+            index = diffDistSubArray.indexOf(minOff);
+            minOff = offDistSubArray[index]
+        } else {
+            minOff = Math.min(...offDistSubArray);
+            index = offDistSubArray.indexOf(minOff);
+        }
+
 
         data[row].offLaunch = offVillages[index];
         data[row].offLaunchID = getKeyByValue(villageIDs, data[row].offLaunch);
@@ -111,11 +125,13 @@ function redisplayVillages() {
     }
 
     for (row = 0; row < data.length; row++) {
-        if (data[row].offDistance <= data[row].defDistance || Number(data[row]["wall"]) === 0) {
+        // if (data[row].offDistance <= data[row].defDistance /*|| Number(data[row]["wall"]) === 0*/) {
             // if (data[row].offDistance > data[row].defDistance && Number(data[row]["wall"]) > 0) {
             div = document.createElement('div');
             div.id = data[row].ID;
             div.className = "coord";
+
+            div.className += data[row].offDistance > data[row].defDistance ? " tint" : ""
 
             launchTo = document.createElement("a");
             launchTo.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=info_village&id=" + data[row].ID);
@@ -129,6 +145,8 @@ function redisplayVillages() {
             div = document.createElement('div');
             div.className = "coord";
 
+            div.className += data[row].offDistance > data[row].defDistance ? " tint" : ""
+
             launchFrom = document.createElement('a');
             launchFrom.innerHTML = data[row].launch;
             launchFrom.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=overview");
@@ -141,6 +159,8 @@ function redisplayVillages() {
             div = document.createElement('div');
             div.className = "coord";
 
+            div.className += data[row].offDistance > data[row].defDistance ? " tint" : ""
+
             launchFrom = document.createElement('a');
             launchFrom.innerHTML = data[row].offLaunch;
             launchFrom.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].offLaunchID + "&screen=overview");
@@ -151,9 +171,15 @@ function redisplayVillages() {
             table.appendChild(div);
 
             div = createDiv(Math.round(data[row].defDistance * 10) / 10);
+
+            div.className += data[row].offDistance > data[row].defDistance ? " tint" : ""
+
             table.appendChild(div);
 
             div = createDiv(Math.round(data[row].offDistance * 10) / 10);
+
+            div.className += data[row].offDistance > data[row].defDistance ? " tint" : ""
+
             table.appendChild(div);
 
             for (const building of buildings) {
@@ -162,6 +188,9 @@ function redisplayVillages() {
                 div = document.createElement('div');
                 div.innerHTML = level;
                 div.className = "data";
+
+                div.className += data[row].offDistance > data[row].defDistance ? " tint" : ""
+
                 div.id = data[row].ID + "_" + building;
 
                 if (isClickable(building, level)) {
@@ -169,7 +198,7 @@ function redisplayVillages() {
                 }
                 table.appendChild(div)
             }
-        }
+        // }
     }
 
 }
@@ -278,6 +307,7 @@ function sendCats(event) {
             for (let row = 0; row < data.length; row++) {
                 if (id == data[row].ID) {
                     launchID = data[row].offLaunchID;
+                    vill = row
                     break;
                 }
             }
@@ -285,29 +315,30 @@ function sendCats(event) {
             level = parseInt(event.target.innerHTML);
             console.log(id, building, level);
 
-            if (isClickable(building, level)) {
+            if (isWallClickable(parseInt(data[vill]["main"]), parseInt(data[vill]["barracks"]), level)) {
                 console.log("whyyyyyyyyyy", building, level, id)
                 launch = document.createElement("a");
                 link = launchID > -1 ?
-                    "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&ram=" + rams[level]
+                    "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&ram=" + rams[level + 2]
                     :
-                    "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&ram=" + rams[level];
+                    "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&ram=" + rams[level + 2];
 
                 launch.setAttribute("href", link);
                 launch.setAttribute("target", "_blank");
-                // launch.click();
+                launch.click();
                 console.log("ram click", id, building, launchID)
 
                 console.log(id)
                 for (let row = 0; row < data.length; row++) {
                     if (id == data[row].ID) {
                         console.log(data[row][building])
-                        data[row][building] = 1;
+                        data[row][building] = 0;
                         level = data[row][building];
                         break
                     }
                 }
                 event.target.innerHTML = level;
+                event.target.className = "data";
             }
         } else if (buildings.includes(building)){
 
@@ -325,13 +356,13 @@ function sendCats(event) {
             while (isClickable(building, level)) {
                 launch = document.createElement("a");
                 link = launchID > -1 ?
-                    "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&catapult=" + cats[level]
+                    "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&catapult=" + cats[level + 2]
                     :
-                    "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&catapult=" + cats[level];
+                    "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&catapult=" + cats[level + 2];
 
                 launch.setAttribute("href", link);
                 launch.setAttribute("target", "_blank");
-                // launch.click();
+                launch.click();
 
                 console.log("cat click", id, building, launchID)
 
@@ -354,6 +385,10 @@ function sendCats(event) {
 
 function isClickable(building, level) {
     return (minimums[building] && minimums[building] < level) || (!minimums[building] && level > 0);
+}
+
+function isWallClickable(hq, rax, wall) {
+    return wall > 0 || (hq >= 3 && rax >= 1);
 }
 
 function deleteAllChildren(element) {

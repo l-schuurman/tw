@@ -29,7 +29,7 @@ for(const line of arr) {
 
 let output = JSON.stringify(obj);
 
-fs.writeFile('/Users/Black/Code/Tribalwars/tw/BarbShaper/barbData.json', output, err => {
+fs.writeFile('/Users/Black/Code/Tribalwars/tw/BarbShape/barbData.json', output, err => {
     if (err) {
       console.error(err);
     }

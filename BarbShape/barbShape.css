@@ -93,3 +93,7 @@ textarea {
     display: flex;
     flex-direction: column;
 }
+
+.tint {
+    background: #bdc7e2 !important;
+}
