@@ -12,7 +12,7 @@ else {
     baseURL = "/game.php?&screen=report&view=";
 }
 
-var buildingList = ["main", "barracks", "stable", "garage", "watchtower", "snob", "smith", "rally", "statue", "market", "timber", "stone", "iron", "farm", "storage", "hide", "wall"];
+var buildingList = ["main", "barracks", "stable", "garage", "watchtower", "snob", "smith", "rally", "statue", "market", "wood", "stone", "iron", "farm", "storage", "hide", "wall"];
 var allBuildingInfo = [];
 var reportIDs = [];
 
