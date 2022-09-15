@@ -246,7 +246,7 @@ function handleClick(event) {
         return;
     } else if (id.includes("_")) {
         [id, type] = id.split("_");
-        console.log(id,type)
+        console.log(id, type)
         if (type == "check") {
             toggleCheckbox(id);
         } else if (type == "barb") {
@@ -297,6 +297,10 @@ function sendScouts(id, launchID) {
     launch.setAttribute("target", "_blank");
     launch.click();
     console.log("Click this link to go to that report", link)
+    if (spyReports[data[i].target]) {
+        debugLink = "https://en129.tribalwars.net/game.php?screen=report&view=" + spyReports[data[i].target]
+        console.log("The direct link to the report should be", debugLink)
+    }
 
     checkbox = document.getElementById(id + "_check");
     checkbox.checked = true;
@@ -343,7 +347,7 @@ async function openTabs() {
             checkbox = document.getElementById(data[i].ID + "_check");
             checkbox.checked = true;
 
-            if(count % 5 == 0) await timer(tabDelay);
+            if (count % 5 == 0) await timer(tabDelay);
 
             if (count >= numTabs) {
                 break;
@@ -355,19 +359,19 @@ async function openTabs() {
 function updateTabs() {
     numTabsTEMP = Number(document.getElementById('tabNumber').value);
     tabDelayTEMP = Number(document.getElementById('tabDelay').value);
-    
+
     console.log(numTabsTEMP, tabDelayTEMP, numTabs, tabDelay);
 
-    if(numTabsTEMP > 0){
+    if (numTabsTEMP > 0) {
         numTabs = numTabsTEMP;
     }
-    if(tabDelayTEMP > 0){
+    if (tabDelayTEMP > 0) {
         tabDelay = tabDelayTEMP;
     }
 
     console.log(numTabsTEMP, tabDelayTEMP, numTabs, tabDelay);
 
-    document.getElementById('opentabs').innerHTML = "Open Up To "+numTabs+" Tabs";
+    document.getElementById('opentabs').innerHTML = "Open Up To " + numTabs + " Tabs";
 }
 
 function updateOutgoing() {
@@ -376,13 +380,13 @@ function updateOutgoing() {
 
     // displayList("outgoingVillageList", outgoingVillages, "outgoing")
 
-    for(village = 0; village < outgoingVillages.length; village++){
+    for (village = 0; village < outgoingVillages.length; village++) {
         const i = data.findIndex(object => {
             return object.target == outgoingVillages[village];
         })
         console.log(outgoingVillages[village], i)
 
-        if(i > 0) {
+        if (i > 0) {
             id = data[i].ID;
             checkbox = document.getElementById(id + "_check");
             checkbox.checked = true;
@@ -411,7 +415,7 @@ async function sendSingleVillScouts() {
             checkbox = document.getElementById(data[i].ID + "_check");
             checkbox.checked = true;
 
-            if(count % 5 == 0) await timer(tabDelay);
+            if (count % 5 == 0) await timer(tabDelay);
 
             if (count >= spyTabs) {
                 break;
