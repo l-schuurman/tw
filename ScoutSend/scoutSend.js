@@ -296,6 +296,7 @@ function sendScouts(id, launchID) {
     launch.setAttribute("href", link);
     launch.setAttribute("target", "_blank");
     launch.click();
+    console.log("Click this link to go to that report", link)
 
     checkbox = document.getElementById(id + "_check");
     checkbox.checked = true;
