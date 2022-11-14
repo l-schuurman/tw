@@ -4,11 +4,11 @@ const fs = require('fs');
 
 async function fetch_demo() {
   
-  let url = "https://en129.tribalwars.net/map/village.txt"
+  let url = "https://en131.tribalwars.net/map/village.txt"
   const resp = await fetch(url);
   const body = await resp.text();
 
-  fs.writeFile('/Users/Black/Code/Tribalwars/tw/gamedata/village129.txt', body, err => {
+  fs.writeFile('/Users/Black/Code/Tribalwars/tw/gamedata/village131.txt', body, err => {
     if (err) {
       console.error(err);
     }

@@ -134,7 +134,7 @@ function redisplayVillages() {
             div.className += data[row].offDistance > data[row].defDistance ? " tint" : ""
 
             launchTo = document.createElement("a");
-            launchTo.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=info_village&id=" + data[row].ID);
+            launchTo.setAttribute("href", "https://en131.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=info_village&id=" + data[row].ID);
             launchTo.setAttribute("target", "_blank");
             launchTo.innerHTML = data[row].target;
 
@@ -149,7 +149,7 @@ function redisplayVillages() {
 
             launchFrom = document.createElement('a');
             launchFrom.innerHTML = data[row].launch;
-            launchFrom.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=overview");
+            launchFrom.setAttribute("href", "https://en131.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=overview");
             launchFrom.setAttribute("target", "_blank");
 
             div.appendChild(launchFrom);
@@ -163,7 +163,7 @@ function redisplayVillages() {
 
             launchFrom = document.createElement('a');
             launchFrom.innerHTML = data[row].offLaunch;
-            launchFrom.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].offLaunchID + "&screen=overview");
+            launchFrom.setAttribute("href", "https://en131.tribalwars.net/game.php?village=" + data[row].offLaunchID + "&screen=overview");
             launchFrom.setAttribute("target", "_blank");
 
             div.appendChild(launchFrom);
@@ -319,9 +319,9 @@ function sendCats(event) {
                 console.log("whyyyyyyyyyy", building, level, id)
                 launch = document.createElement("a");
                 link = launchID > -1 ?
-                    "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&ram=" + rams[level + 2]
+                    "https://en131.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&ram=" + rams[level + 2]
                     :
-                    "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&ram=" + rams[level + 2];
+                    "https://en131.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&ram=" + rams[level + 2];
 
                 launch.setAttribute("href", link);
                 launch.setAttribute("target", "_blank");
@@ -356,9 +356,9 @@ function sendCats(event) {
             while (isClickable(building, level)) {
                 launch = document.createElement("a");
                 link = launchID > -1 ?
-                    "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&catapult=" + cats[level + 2]
+                    "https://en131.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&catapult=" + cats[level + 2]
                     :
-                    "https://en129.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&catapult=" + cats[level + 2];
+                    "https://en131.tribalwars.net/game.php?" + "&screen=place&target=" + id + "&catapult=" + cats[level + 2];
 
                 launch.setAttribute("href", link);
                 launch.setAttribute("target", "_blank");
