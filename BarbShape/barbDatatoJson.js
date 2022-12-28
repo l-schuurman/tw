@@ -1,7 +1,7 @@
 fs = require('fs');
 var villageIDs = require('../gamedata/village131IDcoord.json')
 
-const contents = fs.readFileSync('/Users/Black/Code/Tribalwars/tw/BarbShape/barbData.txt', 'utf-8');
+const contents = fs.readFileSync('/Users/Black/Code/tw/BarbShape/barbData.txt', 'utf-8');
 const arr = contents.split(/\r?\n/).splice(1);
 
 const buildings = ["main", "barracks", "stable", "garage", "watchtower", "snob", "smith", "place", "statue", "market", "wood", "stone", "iron", "farm", "storage", "hide", "wall"]
@@ -29,7 +29,7 @@ for(const line of arr) {
 
 let output = JSON.stringify(obj);
 
-fs.writeFile('/Users/Black/Code/Tribalwars/tw/BarbShape/barbData.json', output, err => {
+fs.writeFile('/Users/Black/Code/tw/BarbShape/barbData.json', output, err => {
     if (err) {
       console.error(err);
     }
