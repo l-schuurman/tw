@@ -5,7 +5,7 @@
     <script type="module">
         async function loadMyData() {
             const { default: data } = await import("./barbData.json", { assert: { type: "json" } });
-            const { default: villageIDs } = await import("../gamedata/village131IDcoord.json", { assert: { type: "json" } });
+            const { default: villageIDs } = await import("../gamedata/village133IDcoord.json", { assert: { type: "json" } });
             window.data = data;
             window.villageIDs = villageIDs;
         }
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    Dec 29 29ST
+    Jun 28
     <div class="flex">
         <div class="sub-flex">
             <textarea id="defText" name="text"
