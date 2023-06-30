@@ -65,6 +65,7 @@ function calcDistances() {
         defDistSubArray = []
         diffDistSubArray = []
 
+        console.log(row, data[row], data[row].target)
         a = data[row].target.split("|");
         x2 = a[0];
         y2 = a[1];
