@@ -110,7 +110,7 @@ function displayVillages() {
         div.className = "coord";
 
         launchTo = document.createElement("a");
-        launchTo.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=info_village&id=" + data[row].ID);
+        launchTo.setAttribute("href", "https://en135.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=info_village&id=" + data[row].ID);
         launchTo.setAttribute("target", "_blank");
         launchTo.innerHTML = data[row].target;
 
@@ -123,7 +123,7 @@ function displayVillages() {
 
         launchFrom = document.createElement('a');
         launchFrom.innerHTML = data[row].launch;
-        launchFrom.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=overview");
+        launchFrom.setAttribute("href", "https://en135.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=overview");
         launchFrom.setAttribute("target", "_blank");
 
         div.appendChild(launchFrom);
@@ -186,7 +186,7 @@ function createTableData() {
 
         targetOverview = document.createElement('a');
         targetOverview.innerHTML = data[row].target;
-        targetOverview.setAttribute("href", "https://en129.tribalwars.net/game.php?screen=info_village&id=" + data[row].ID);
+        targetOverview.setAttribute("href", "https://en135.tribalwars.net/game.php?screen=info_village&id=" + data[row].ID);
         targetOverview.setAttribute("target", "_blank");
 
         div.appendChild(targetOverview);
@@ -198,7 +198,7 @@ function createTableData() {
 
         launchFrom = document.createElement('a');
         launchFrom.innerHTML = data[row].launch;
-        launchFrom.setAttribute("href", "https://en129.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=overview");
+        launchFrom.setAttribute("href", "https://en135.tribalwars.net/game.php?village=" + data[row].launchID + "&screen=overview");
         launchFrom.setAttribute("target", "_blank");
 
         div.appendChild(launchFrom);
@@ -290,15 +290,15 @@ function sendScouts(id, launchID) {
     launch = document.createElement("a");
     link = spyReports[data[i].target] ?
 
-        "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&try=confirm&type=same&report_id=" + spyReports[data[i].target]
-        : "https://en129.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&spy=" + 1;
+        "https://en135.tribalwars.net/game.php?village=" + launchID + "&screen=place&try=confirm&type=same&report_id=" + spyReports[data[i].target]
+        : "https://en135.tribalwars.net/game.php?village=" + launchID + "&screen=place&target=" + id + "&spy=" + 1;
 
     launch.setAttribute("href", link);
     launch.setAttribute("target", "_blank");
     launch.click();
     console.log("Click this link to go to that report", link)
     if (spyReports[data[i].target]) {
-        debugLink = "https://en129.tribalwars.net/game.php?screen=report&view=" + spyReports[data[i].target]
+        debugLink = "https://en135.tribalwars.net/game.php?screen=report&view=" + spyReports[data[i].target]
         console.log("The direct link to the report should be", debugLink)
     }
 

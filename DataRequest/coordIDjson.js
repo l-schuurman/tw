@@ -1,6 +1,6 @@
 fs = require('fs');
 
-const contents = fs.readFileSync('/Users/Black/Code/tw/gamedata/village133.txt', 'utf-8');
+const contents = fs.readFileSync('/Users/Black/Code/tw/gamedata/village135.txt', 'utf-8');
 const arr = contents.split(/\r?\n/);
 
 let json = {}
@@ -16,7 +16,7 @@ for(const line of arr) {
 
 let output = JSON.stringify(json);
 
-fs.writeFile('/Users/Black/Code/tw/gamedata/village133coordID.json', output, err => {
+fs.writeFile('/Users/Black/Code/tw/gamedata/village135coordID.json', output, err => {
     if (err) {
       console.error(err);
     }
