@@ -1,5 +1,5 @@
 fs = require('fs');
-var villageIDs = require('../gamedata/village133IDcoord.json')
+var villageIDs = require('../gamedata/village135IDcoord.json')
 
 const contents = fs.readFileSync('/Users/Black/Code/tw/BarbShape/barbData.txt', 'utf-8');
 const arr = contents.split(/\r?\n/).splice(1);
